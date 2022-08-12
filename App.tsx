@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 
 import React from "react";
 import { ThemeProvider } from "styled-components";
@@ -28,15 +29,13 @@ export default function App() {
   }
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-
-    <ThemeProvider theme={theme}>
-      <NavigationContainer>
-
-      <AppRoutes />
-      </NavigationContainer>
-      {/* <Dashboard /> */}
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <AppRoutes />
+        </NavigationContainer>
+        {/* <Dashboard /> */}
+      </ThemeProvider>
     </GestureHandlerRootView>
   );
 }

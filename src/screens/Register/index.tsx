@@ -56,6 +56,7 @@ export function Register() {
 
   function handleCloseSelectCategoryModal() {
     setModalOpen(false);
+    console.log('close')
   }
 
   function handleRegister(form: Partial<FormData>) {
