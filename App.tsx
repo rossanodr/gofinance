@@ -12,13 +12,12 @@ import {
 } from "@expo-google-fonts/poppins";
 
 import theme from "./src/global/styles/theme";
-import Dashboard from "./src/screens/Dashboard";
-import AppLoading from "expo-app-loading";
-import { Register } from "./src/screens/Register";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { AppRoutes } from "./src/routes/app.routes";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'react-native';
 
 
 export default function App() {
@@ -39,6 +38,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
+          <StatusBar barStyle='light-content'/>
           <AppRoutes />
         </NavigationContainer>
         {/* <Dashboard /> */}
