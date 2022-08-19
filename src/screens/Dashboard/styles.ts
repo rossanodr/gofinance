@@ -10,6 +10,14 @@ import {
 import { DataListProps } from ".";
 import { FlatList, FlatListProps } from "react-native";
 
+export const LoadingContainer = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.background};
+  justify-content: center;
+  align-items: center;
+`;
+
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
