@@ -1,7 +1,7 @@
-import { GoFinancesRoutesList } from "./routes";
+import { gofinanceRoutesList } from "./routes";
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends GoFinancesRoutesList {}
+    interface RootParamList extends gofinanceRoutesList {}
   }
 }

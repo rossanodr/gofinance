@@ -21,6 +21,7 @@ import {
 } from "./styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../hooks/useAuth";
 
 interface FormData {
   name: string;
@@ -38,9 +39,11 @@ const schema = Yup.object()
   .required();
 
 export function Register() {
+  const {user} = useAuth();
   const [transactionType, setTransactionType] = useState("");
+
   const [modalOpen, setModalOpen] = useState(false);
-  const dataKey = "@gofinances:transactions";
+  const dataKey = `@gofinance:transactions_user:${user.id}`
 
   const [category, setCategory] = useState({
     key: "category",
@@ -147,7 +150,7 @@ export function Register() {
                 isActive={transactionType === "positive"}
               />
               <TransactionTypeButton
-                title="Incomes"
+                title="Outcomes"
                 type="down"
                 onPress={() => handleTransactionType("negative")}
                 isActive={transactionType === "negative"}

@@ -23,6 +23,7 @@ import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { addMonths, format, subMonths } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { ActivityIndicator } from "react-native";
+import { useAuth } from "../../hooks/useAuth";
 
 interface TransactionData {
   type: "positive" | "negative";
@@ -47,25 +48,23 @@ export function Resume() {
   const [isLoading, setIsLoading] = useState(false);
 
   const theme = useTheme();
+  const { user } = useAuth();
 
   function handleDateChange(action: "next" | "previous") {
     setIsLoading(true);
     if (action === "next") {
       const newDate = addMonths(selectedDate, 1);
       setSelectedDate(newDate);
-      
     } else {
       const newDate = subMonths(selectedDate, 1);
       setSelectedDate(newDate);
-      
     }
     setIsLoading(false);
-
   }
   async function loadData() {
     setIsLoading(true);
 
-    const dataKey = "@gofinances:transactions";
+    const dataKey = `@gofinance:transactions_user:${user.id}`;
 
     const response = await AsyncStorage.getItem(dataKey);
     const responseFormatted = response ? JSON.parse(response) : [];
@@ -127,15 +126,15 @@ export function Resume() {
 
   return (
     <Container>
-          <Header>
-            <Title>Resumo por categoria</Title>
-          </Header>
-          {isLoading ? (
-            <LoadingContainer>
-              <ActivityIndicator color={theme.colors.primary} size="large" />
-            </LoadingContainer>
-          ) : (
-            <>
+      <Header>
+        <Title>Resumo por categoria</Title>
+      </Header>
+      {isLoading ? (
+        <LoadingContainer>
+          <ActivityIndicator color={theme.colors.primary} size="large" />
+        </LoadingContainer>
+      ) : (
+        <>
           <Content
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
