@@ -5,6 +5,16 @@ import theme from '../../global/styles/theme';
 
 import { Register } from '.';
 
+jest.mock('../../hooks/useAuth.tsx', () => ({
+    useAuth: () => ({
+        user: {
+            id: '123'
+        }
+    })
+}))
+
+jest.mock('@react-navigation/native');
+
 const Providers: React.FC = ({ children }) => (
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   );

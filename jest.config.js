@@ -9,6 +9,14 @@ module.exports = {
     setupFiles: ["<rootDir>/jestSetupFile.js"],
     
     setupFilesAfterEnv: ['jest-styled-components'],
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'src/**/*.tsx',
+        "!src/**/*.spec.tsx"
+    ],
+    collectReporters: [
+        'lcov'
+    ]
   }
 
   
